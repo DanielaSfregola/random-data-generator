@@ -6,9 +6,7 @@ import org.scalacheck.{Arbitrary, Gen}
 import org.specs2.mutable._
 import scala.collection.JavaConversions._
 
-class RandomDataGeneratorSpec
-    extends RandomDataGenerator
-    with SpecificationLike {
+class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike {
 
   "RandomDataGenerator" should {
 
@@ -16,7 +14,10 @@ class RandomDataGeneratorSpec
       import org.scalacheck.Shapeless._
 
       case class SimpleExample(text: String)
-      random[SimpleExample] should beAnInstanceOf[SimpleExample]
+
+      val instance = random[SimpleExample]
+
+      instance should beAnInstanceOf[SimpleExample]
     }
 
     "generate a random instance of a non-predefined type" in {
@@ -26,7 +27,9 @@ class RandomDataGeneratorSpec
         Gen.oneOf(Currency.getAvailableCurrencies.toSeq)
       }
 
-      random[Currency] should beAnInstanceOf[Currency]
+      val instance = random[Currency]
+
+      instance should beAnInstanceOf[Currency]
     }
 
     "generate a random instance by using a custom generator" in {
@@ -41,7 +44,11 @@ class RandomDataGeneratorSpec
         } yield Person(name, age)
       }
 
-      random[Person] should beAnInstanceOf[Person]
+      val instance = random[Person]
+
+      instance should beAnInstanceOf[Person]
+      Seq("Daniela", "John", "Martin", "Marco").contains(instance.name) should beTrue
+      (0 to 100).contains(instance.age) should beTrue
     }
 
     "generate a random instance by using a overridden generator of a predefined type" in {
@@ -52,8 +59,9 @@ class RandomDataGeneratorSpec
       implicit val arbitraryString: Arbitrary[String] = Arbitrary(Gen.alphaStr)
 
       val instance = random[AlphaStrExample]
+
       instance should beAnInstanceOf[AlphaStrExample]
-      instance.text.forall(_.isLetter) === true
+      instance.text.forall(_.isLetter) should beTrue
     }
 
     "generate a random instance of a case class with more than 22 fields" in {
@@ -101,7 +109,9 @@ class RandomDataGeneratorSpec
                            f21, f22, f23, f24, f25, f26, f27, f28, f29, f30)
       }
 
-      random[BigExample] should beAnInstanceOf[BigExample]
+      val instance = random[BigExample]
+
+      instance should beAnInstanceOf[BigExample]
     }
 
   }

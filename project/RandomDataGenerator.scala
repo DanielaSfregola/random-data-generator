@@ -1,39 +1,22 @@
-import com.typesafe.sbt.SbtGhPages._
 import com.typesafe.sbt.SbtGit.{GitKeys => git}
 import com.typesafe.sbt.SbtSite._
 import sbt.Keys._
 import sbt.{LocalProject, _}
 
-object Resolvers {
-  val resolvers = Seq(
-    "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/",
-    "Spray Repository"    at "http://repo.spray.io"
-  )
-}
-
 object Dependencies {
 
-  val TypesafeVersion = "1.3.0"
-  val AkkaVersion = "2.3.6"
-  val SprayVersion = "1.3.3"
-  val Json4sVersion = "3.2.11"
-  val Spec2Version = "2.3.13"
+  val Spec2 = "3.8.4"
 
   val dependencies = Seq(
-    "com.typesafe" % "config" % TypesafeVersion,
-    "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
-    "io.spray" %% "spray-client" % SprayVersion,
-    "io.spray" %% "spray-http" % SprayVersion,
-    "io.spray" %% "spray-routing" % SprayVersion,
-    "org.json4s" %% "json4s-native" % Json4sVersion,
-    "org.specs2" %% "specs2-core" % Spec2Version % "test",
-    "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % "test"
+    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.1",
+    "org.specs2" %% "specs2-core" % Spec2 % "test",
+    "org.specs2" %% "specs2-mock" % Spec2 % "test"
   )
 }
 
 object RandomDataGenerator extends Build {
 
-  val v = "0.1-SNAPSHOT"
+  val v = "1.0-SNAPSHOT"
 
   lazy val standardSettings = Defaults.defaultSettings ++
   Seq(
@@ -54,7 +37,6 @@ object RandomDataGenerator extends Build {
       </developer>
     </developers>
     ),
-    resolvers ++= Resolvers.resolvers,
 
     publishMavenStyle := true,
     git.gitRemoteRepo := "git@github.com:DanielaSfregola/random-data-generator.git",

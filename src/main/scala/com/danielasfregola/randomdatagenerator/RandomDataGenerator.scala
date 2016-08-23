@@ -1,7 +1,6 @@
 package com.danielasfregola.randomdatagenerator
 
 import org.scalacheck._
-import org.scalacheck.Shapeless._
 
 trait RandomDataGenerator {
 
