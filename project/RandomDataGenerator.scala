@@ -33,7 +33,7 @@ object Dependencies {
 
 object RandomDataGenerator extends Build {
 
-  val v = "0.3-SNAPSHOT"
+  val v = "0.1-SNAPSHOT"
 
   lazy val standardSettings = Defaults.defaultSettings ++
   Seq(

@@ -16,10 +16,7 @@ class RandomDataGeneratorSpec
       import org.scalacheck.Shapeless._
 
       case class SimpleExample(text: String)
-
-      val instance = random[SimpleExample]
-      instance should beAnInstanceOf[SimpleExample]
-      instance.text.forall(_.isLetter) === false
+      random[SimpleExample] should beAnInstanceOf[SimpleExample]
     }
 
     "generate a random instance of a non-predefined type" in {
