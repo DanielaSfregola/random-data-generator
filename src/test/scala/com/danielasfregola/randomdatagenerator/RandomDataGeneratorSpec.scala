@@ -57,44 +57,44 @@ class RandomDataGeneratorSpec
     }
 
     "generate a random instance of a case class with more than 22 fields" in {
-      case class BigExample(f1: String, f2: String, f3: String, f4: String, f5: String,
-                            f6: String, f7: String, f8: String, f9: String, f10: String,
-                            f11: String, f12: String, f13: String, f14: String, f15: String,
-                            f16: String, f17: String, f18: String, f19: String, f20: String,
-                            f21: String, f22: String, f23: String, f24: String, f25: String,
-                            f26: String, f27: String, f28: String, f29: String, f30: String)
+      case class BigExample(f1: String, f2: Int, f3: Long, f4: Char, f5: String,
+                            f6: String, f7: Int, f8: Long, f9: Char, f10: String,
+                            f11: String, f12: Int, f13: Long, f14: Char, f15: String,
+                            f16: String, f17: Int, f18: Long, f19: Char, f20: String,
+                            f21: String, f22: Int, f23: Long, f24: Char, f25: String,
+                            f26: String, f27: Int, f28: Long, f29: Char, f30: String)
 
       implicit val arbitraryBigExample: Arbitrary[BigExample] = Arbitrary {
         for {
           f1 <- Gen.alphaStr
-          f2 <- Gen.alphaStr
-          f3 <- Gen.alphaStr
-          f4 <- Gen.alphaStr
+          f2 <- Arbitrary.arbInt.arbitrary
+          f3 <- Arbitrary.arbLong.arbitrary
+          f4 <- Gen.alphaNumChar
           f5 <- Gen.alphaStr
           f6 <- Gen.alphaStr
-          f7 <- Gen.alphaStr
-          f8 <- Gen.alphaStr
-          f9 <- Gen.alphaStr
+          f7 <- Arbitrary.arbInt.arbitrary
+          f8 <- Arbitrary.arbLong.arbitrary
+          f9 <- Gen.alphaNumChar
           f10 <- Gen.alphaStr
           f11 <- Gen.alphaStr
-          f12 <- Gen.alphaStr
-          f13 <- Gen.alphaStr
-          f14 <- Gen.alphaStr
+          f12 <- Arbitrary.arbInt.arbitrary
+          f13 <- Arbitrary.arbLong.arbitrary
+          f14 <- Gen.alphaNumChar
           f15 <- Gen.alphaStr
           f16 <- Gen.alphaStr
-          f17 <- Gen.alphaStr
-          f18 <- Gen.alphaStr
-          f19 <- Gen.alphaStr
+          f17 <- Arbitrary.arbInt.arbitrary
+          f18 <- Arbitrary.arbLong.arbitrary
+          f19 <- Gen.alphaNumChar
           f20 <- Gen.alphaStr
           f21 <- Gen.alphaStr
-          f22 <- Gen.alphaStr
-          f23 <- Gen.alphaStr
-          f24 <- Gen.alphaStr
+          f22 <- Arbitrary.arbInt.arbitrary
+          f23 <- Arbitrary.arbLong.arbitrary
+          f24 <- Gen.alphaNumChar
           f25 <- Gen.alphaStr
           f26 <- Gen.alphaStr
-          f27 <- Gen.alphaStr
-          f28 <- Gen.alphaStr
-          f29 <- Gen.alphaStr
+          f27 <- Arbitrary.arbInt.arbitrary
+          f28 <- Arbitrary.arbLong.arbitrary
+          f29 <- Gen.alphaNumChar
           f30 <- Gen.alphaStr
         } yield BigExample(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10,
                            f11, f12, f13, f14, f15, f16, f17, f18, f19, f20,
