@@ -2,8 +2,9 @@ package com.danielasfregola.randomdatagenerator
 
 import java.util.Currency
 
-import org.scalacheck.{Arbitrary, Gen}
+import org.scalacheck._
 import org.specs2.mutable._
+
 import scala.collection.JavaConversions._
 
 class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike {
@@ -11,8 +12,6 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
   "RandomDataGenerator" should {
 
     "generate a random instance of a simple case class" in {
-      import org.scalacheck.Shapeless._
-
       case class SimpleExample(text: String)
 
       val instance = random[SimpleExample]
@@ -21,7 +20,6 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
     }
 
     "generate a random instance of a non-predefined type" in {
-      import org.scalacheck.Shapeless._
 
       implicit val arbitraryCurrency: Arbitrary[Currency] = Arbitrary {
         Gen.oneOf(Currency.getAvailableCurrencies.toSeq)
@@ -33,8 +31,6 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
     }
 
     "generate a random instance by using a custom generator" in {
-      import org.scalacheck.Shapeless._
-
       case class Person(name: String, age: Int)
 
       implicit val arbitraryPerson: Arbitrary[Person] = Arbitrary {
@@ -52,8 +48,6 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
     }
 
     "generate a random instance by using a overridden generator of a predefined type" in {
-      import org.scalacheck.Shapeless._
-
       case class AlphaStrExample(text: String)
 
       implicit val arbitraryString: Arbitrary[String] = Arbitrary(Gen.alphaStr)
