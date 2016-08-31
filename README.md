@@ -15,7 +15,7 @@ resolver += Resolver.sonatypeRepo("releases")
 
 Also, you need to include the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.0"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.1"
 ```
 
 Usage
@@ -29,10 +29,8 @@ case class Example(text: String, n: Int)
 
 then you can just create a random instance of your case class as following:
 ```scala
-import org.scalacheck.Shapeless._
-// This is needed to automatically generate an instance of Arbitrary[T]
-
 val example: Example = random[Example]
+// returns Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257)
 ```
 
 Have a look at the [tests](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for working examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
@@ -46,5 +44,5 @@ resolver += Resolver.sonatypeRepo("snapshots")
 
 Then, add the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.1-SNAPSHOT"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.2-SNAPSHOT"
 ```

@@ -5,8 +5,6 @@ import java.util.Currency
 import org.scalacheck._
 import org.specs2.mutable._
 
-import scala.collection.JavaConversions._
-
 class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike {
 
   "RandomDataGenerator" should {
@@ -20,6 +18,7 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
     }
 
     "generate a random instance of a non-predefined type" in {
+      import scala.collection.JavaConversions._
 
       implicit val arbitraryCurrency: Arbitrary[Currency] = Arbitrary {
         Gen.oneOf(Currency.getAvailableCurrencies.toSeq)
