@@ -15,7 +15,7 @@ resolver += Resolver.sonatypeRepo("releases")
 
 Also, you need to include the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.1"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.2"
 ```
 
 Usage
@@ -63,5 +63,5 @@ resolver += Resolver.sonatypeRepo("snapshots")
 
 Then, add the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.2-SNAPSHOT"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.3-SNAPSHOT"
 ```
