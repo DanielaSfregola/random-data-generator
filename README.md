@@ -35,8 +35,8 @@ val example: Example = random[Example]
 
 Have a look at the [tests](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for working examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
 
-How to Fix your Seed
--------------------------------
+Fix your Seed
+-------------
 When investigating bugs or test failures, it can be useful to reproduce the same generated data of a specific session.
 
 For every session, a seed is selected and communicated in the logs. The log message will look similar to the following:
