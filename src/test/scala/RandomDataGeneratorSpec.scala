@@ -1,7 +1,6 @@
-package com.danielasfregola.randomdatagenerator
-
 import java.util.Currency
 
+import com.danielasfregola.randomdatagenerator.RandomDataGenerator
 import org.scalacheck._
 import org.specs2.mutable._
 

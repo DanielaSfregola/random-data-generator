@@ -8,15 +8,11 @@ import scala.util.Properties
 
 trait RandomDataGenerator extends ShapelessLike {
 
-  implicit class RichArbitrary[T](arb: Arbitrary[T]) {
-    def instance: T = {
-      val gen = arb.arbitrary
-      val optT = gen.apply(Gen.Parameters.default, RandomDataGenerator.seed)
-      optT.get
-    }
+  def random[T](implicit arb: Arbitrary[T]): T = {
+    val gen = arb.arbitrary
+    val optT = gen.apply(Gen.Parameters.default, RandomDataGenerator.seed)
+    optT.get
   }
-
-  def random[T](implicit arb: Arbitrary[T]): T = arb.instance
 }
 
 private[randomdatagenerator] object RandomDataGenerator {
