@@ -20,12 +20,7 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
       import scala.collection.JavaConversions._
 
       implicit val arbitraryCurrency: Arbitrary[Currency] = Arbitrary {
-
-        // Currency.getAvailableCurrencies returns a Set (i.e.: collection not sorted!).
-        // In order to make the generation replicable with the same seed,
-        // we need to make sure to use an ordered sequence before calling `Gen.oneOf`.
-        val allCurrencies = Currency.getAvailableCurrencies.toSeq.sortWith(_.getCurrencyCode < _.getCurrencyCode)
-        Gen.oneOf(allCurrencies)
+        Gen.oneOf(Currency.getAvailableCurrencies.toSeq)
       }
 
       val instance = random[Currency]

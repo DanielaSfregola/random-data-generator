@@ -35,25 +35,6 @@ val example: Example = random[Example]
 
 Have a look at the [tests](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/test/scala/RandomDataGeneratorSpec.scala) for working examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
 
-Fix your Seed
--------------
-When investigating bugs or test failures, it can be useful to reproduce the same generated data of a specific session.
-
-For every session, a seed is selected and communicated in the logs. The log message will look similar to the following:
-```bash
-[info] [RandomDataGenerator] Generating random data with seed -2481216758852790303
-```
-
-To generate the same data again, all you need to do is specify an environment variable indicating the seed number to use:
-```bash
-export RANDOM_DATA_GENERATOR_SEED=-2481216758852790303
-```
-
-Once you are done, remember to remove the environment variable:
-```bash
-unset RANDOM_DATA_GENERATOR_SEED
-```
-
 Snapshot Versions
 -----------------
 To use a snapshot version of this library, make sure you have the resolver for maven central (snapshot repositories) in your SBT settings:
