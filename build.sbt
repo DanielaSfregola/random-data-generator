@@ -1,6 +1,6 @@
 name := "random-data-generator"
 
-version := "1.3"
+version := "1.4-SNAPSHOT"
 
 scalaVersion := "2.11.7"
 
