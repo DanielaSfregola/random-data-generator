@@ -2,7 +2,7 @@ name := "random-data-generator"
 
 version := "1.4-SNAPSHOT"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions in Test ++= Seq("-Yrangepos")
 
