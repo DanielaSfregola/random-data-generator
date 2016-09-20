@@ -35,6 +35,44 @@ val example: Example = random[Example]
 
 Have a look at the [tests](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/test/scala/RandomDataGeneratorSpec.scala) for working examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
 
+Seed Selection
+--------------
+At the beginning of each test session, a seed is selected and used across all the tests.
+The select seed is communicated in the logs. The log message looks something like the following:
+```bash
+[info] [RandomDataGenerator] Generating random data with seed -2481216758852790303
+```
+
+Fix your Seed
+-------------
+When investigating bugs or test failures, it can be useful to reproduce the same generated data of a specific session.
+
+For every session, a seed is selected and communicated in the logs. The log message will look similar to the following:
+```bash
+[info] [RandomDataGenerator] Generating random data with seed -2481216758852790303
+```
+
+To generate the same data again, all you need to do is specify an environment variable indicating the seed number to use:
+```bash
+export RANDOM_DATA_GENERATOR_SEED=-2481216758852790303
+```
+
+Once you are done, remember to remove the environment variable:
+```bash
+unset RANDOM_DATA_GENERATOR_SEED
+```
+
+Multiple Instances of a Case Class
+----------------------------------
+Fixing the seed at the beginning of each session has an important side effect: when calling the function `random[T]`, we always get the same instance back.
+However, sometimes we do need multiple instances of the same case class within the same test.
+
+To generate multiple instances of the same case class use the `random[T](n: Int)` function as following:
+```scala
+val examples: Seq[Example] = random[Example](2)
+// List(Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257), Example(᭞㩵᭟뛎Ժ䌑讵蓐ꍊꎼꙐ涌㰑袽,1736119865))
+```
+
 Snapshot Versions
 -----------------
 To use a snapshot version of this library, make sure you have the resolver for maven central (snapshot repositories) in your SBT settings:
