@@ -20,7 +20,7 @@ libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.3"
 
 Usage
 -----
-Make sure to extends [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/project/RandomDataGenerator.scala) trait in your tests.
+Make sure to extend the [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) trait in your tests.
 
 Assuming you have a case class defined as following:
 ```scala
