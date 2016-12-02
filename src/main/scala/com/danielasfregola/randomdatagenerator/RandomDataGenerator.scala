@@ -22,18 +22,27 @@ trait RandomDataGenerator extends ShapelessLike {
 
 private[randomdatagenerator] object RandomDataGenerator {
 
+  private val SeedVariableName = "RANDOM_DATA_GENERATOR_SEED"
+
   lazy val seed: Seed = {
-    println(s"[info] [RandomDataGenerator] Generating random data with seed $randomLong")
-    Seed(randomLong)
+    prettyPrint("info", s"Generating random data with seed $selectedSeed")
+    Seed(selectedSeed)
   }
 
-  private val randomLong = Properties.envOrNone("RANDOM_DATA_GENERATOR_SEED").map { seedAsString =>
-    try { seedAsString.toLong }
-    catch { case ex: Throwable => throw new RuntimeException("Please, provide a numeric seed", ex) }
+  private val selectedSeed = Properties.envOrNone(SeedVariableName).map {
+    seedAsString =>
+      prettyPrint("warn", s"Variable $SeedVariableName detected: setting seed to $seedAsString")
+      try {
+        seedAsString.toLong
+      } catch {
+        case ex: Throwable => throw new RuntimeException("Please, provide a numeric seed", ex)
+      }
   } getOrElse scala.util.Random.nextLong
 
-}
+  private def prettyPrint(level: String, msg: String) =
+    println(s"[$level] [RandomDataGenerator] $msg")
 
+}
 
 trait ShapelessLike
     extends SingletonInstances
