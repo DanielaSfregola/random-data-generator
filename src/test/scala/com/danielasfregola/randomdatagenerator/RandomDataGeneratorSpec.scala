@@ -1,6 +1,7 @@
+package com.danielasfregola.randomdatagenerator
+
 import java.util.Currency
 
-import com.danielasfregola.randomdatagenerator.RandomDataGenerator
 import org.scalacheck._
 import org.specs2.mutable._
 
@@ -17,7 +18,7 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
     }
 
     "generate multiple instances of a simple case class" in {
-      case class Example(text: String, x: Int)
+      case class Example(text: String, n: Int)
 
       val size = 3
       val instances = random[Example](size)
