@@ -1,7 +1,6 @@
 package com.danielasfregola.randomdatagenerator
 
 import org.scalacheck._
-import org.scalacheck.derive._
 import org.scalacheck.rng.Seed
 
 import scala.util.Properties
@@ -22,7 +21,7 @@ trait RandomDataGenerator extends ShapelessLike {
 
 private[randomdatagenerator] object RandomDataGenerator {
 
-  private val SeedVariableName = "RANDOM_DATA_GENERATOR_SEED"
+  val SeedVariableName = "RANDOM_DATA_GENERATOR_SEED"
 
   lazy val seed: Seed = {
     prettyPrint("info", s"Generating random data with seed $selectedSeed")
@@ -43,10 +42,3 @@ private[randomdatagenerator] object RandomDataGenerator {
     println(s"[$level] [RandomDataGenerator] $msg")
 
 }
-
-trait ShapelessLike
-    extends SingletonInstances
-    with HListInstances
-    with CoproductInstances
-    with DerivedInstances
-    with FieldTypeInstances

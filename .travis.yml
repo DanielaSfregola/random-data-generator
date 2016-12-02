@@ -11,14 +11,18 @@ before_cache:
 
 language: scala
 
-script: "sbt clean coverage test"
+before_script:
+    - export RANDOM_DATA_GENERATOR_SEED=2481216758852790303
+
+script:
+    - sbt clean coverage test
 
 after_script:
-  - "sbt coveralls"
+    - sbt coverageReport coveralls
+    - unset RANDOM_DATA_GENERATOR_SEED
 
 scala:
   - 2.11.8
-  - 2.11.7
   - 2.10.6
 
 jdk:
