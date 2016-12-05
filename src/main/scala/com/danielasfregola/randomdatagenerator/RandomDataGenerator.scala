@@ -37,7 +37,7 @@ private[randomdatagenerator] object RandomDataGenerator {
         case ex: Throwable => throw new RuntimeException("Please, provide a numeric seed", ex)
       }
   } getOrElse {
-    prettyPrint("info", s"No Variable $SeedVariableName detected: setting seed to random number")
+    prettyPrint("info", s"No variable $SeedVariableName detected: setting seed to random number")
     scala.util.Random.nextLong
   }
 

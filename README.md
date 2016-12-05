@@ -62,6 +62,15 @@ Once you are done, remember to remove the environment variable:
 unset RANDOM_DATA_GENERATOR_SEED
 ```
 
+When a fix seed variable is detected, in the logs you will see something similar to the following:
+```bash
+[info] [RandomDataGenerator] Variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to -2481216758852790303
+```
+otherwise, the following message will appear:
+```bash
+[info] [RandomDataGenerator] No variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to random number
+```
+
 Multiple Instances of a Case Class
 ----------------------------------
 Fixing the seed at the beginning of each session has an important side effect: when calling the function `random[T]`, we always get the same instance back.
