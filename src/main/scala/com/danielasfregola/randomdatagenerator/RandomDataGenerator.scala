@@ -30,13 +30,16 @@ private[randomdatagenerator] object RandomDataGenerator {
 
   private val selectedSeed = Properties.envOrNone(SeedVariableName).map {
     seedAsString =>
-      prettyPrint("warn", s"Variable $SeedVariableName detected: setting seed to $seedAsString")
+      prettyPrint("info", s"Variable $SeedVariableName detected: setting seed to $seedAsString")
       try {
         seedAsString.toLong
       } catch {
         case ex: Throwable => throw new RuntimeException("Please, provide a numeric seed", ex)
       }
-  } getOrElse scala.util.Random.nextLong
+  } getOrElse {
+    prettyPrint("info", s"No Variable $SeedVariableName detected: setting seed to random number")
+    scala.util.Random.nextLong
+  }
 
   private def prettyPrint(level: String, msg: String) =
     println(s"[$level] [RandomDataGenerator] $msg")
