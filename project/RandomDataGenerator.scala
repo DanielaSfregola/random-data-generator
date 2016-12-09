@@ -3,17 +3,6 @@ import com.typesafe.sbt.SbtSite._
 import sbt.Keys._
 import sbt.{LocalProject, _}
 
-object Dependencies {
-
-  val Spec2 = "3.8.4"
-
-  val dependencies = Seq(
-    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.1",
-    "org.specs2" %% "specs2-core" % Spec2 % "test",
-    "org.specs2" %% "specs2-mock" % Spec2 % "test"
-  )
-}
-
 object RandomDataGenerator extends Build {
 
   val v = "1.5-SNAPSHOT"
@@ -67,8 +56,6 @@ object RandomDataGenerator extends Build {
 
   lazy val root = Project(id = "random-data-generator",
     base = file("."),
-    settings = standardSettings ++ Seq(
-      libraryDependencies ++= Dependencies.dependencies
-    )
+    settings = standardSettings
   )
 }
