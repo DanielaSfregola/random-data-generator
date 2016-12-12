@@ -27,7 +27,6 @@ scala:
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
 
 env:
   - SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
