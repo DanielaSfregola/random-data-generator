@@ -5,8 +5,7 @@ import sbt.{LocalProject, _}
 
 object RandomDataGenerator extends Build {
 
-  lazy val standardSettings = Defaults.defaultSettings ++
-  Seq(
+  lazy val standardSettings = Seq(
     name := "random-data-generator",
     version := "1.5-SNAPSHOT",
     scalaVersion := "2.12.1",
