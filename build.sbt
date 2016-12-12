@@ -1,9 +1,5 @@
 name := "random-data-generator"
 
-version := "1.5-SNAPSHOT"
-
-scalaVersion := "2.11.8"
-
 scalacOptions in Test ++= Seq("-Yrangepos")
 
 libraryDependencies ++= {
@@ -13,7 +9,7 @@ libraryDependencies ++= {
 }
 
 libraryDependencies ++= {
-  val Spec2 = "3.8.4"
+  val Spec2 = "3.8.6"
 
   Seq(
     "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.4",
