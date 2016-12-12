@@ -5,14 +5,12 @@ import sbt.{LocalProject, _}
 
 object RandomDataGenerator extends Build {
 
-  val v = "1.5-SNAPSHOT"
-
   lazy val standardSettings = Defaults.defaultSettings ++
   Seq(
     name := "random-data-generator",
-    version := v,
-    scalaVersion := "2.11.8",
-    crossScalaVersions := Seq("2.11.8", "2.10.6"),
+    version := "1.5-SNAPSHOT",
+    scalaVersion := "2.12.1",
+    crossScalaVersions := Seq("2.12.1", "2.11.8", "2.10.6"),
     organization := "com.danielasfregola",
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
     homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
