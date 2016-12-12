@@ -18,13 +18,6 @@ Also, you need to include the library as your dependency:
 libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.4"
 ```
 
-When using scala 2.10.x, also add the macro paradise plugin to your build:
-
-```scala
-libraryDependencies +=
-  compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
-```
-
 Usage
 -----
 Make sure to extend the [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) trait in your tests.
@@ -67,15 +60,6 @@ export RANDOM_DATA_GENERATOR_SEED=-2481216758852790303
 Once you are done, remember to remove the environment variable:
 ```bash
 unset RANDOM_DATA_GENERATOR_SEED
-```
-
-When a fix seed variable is detected, in the logs you will see something similar to the following:
-```bash
-[info] [RandomDataGenerator] Variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to -2481216758852790303
-```
-otherwise, the following message will appear:
-```bash
-[info] [RandomDataGenerator] No variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to random number
 ```
 
 Multiple Instances of a Case Class
