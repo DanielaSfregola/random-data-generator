@@ -18,6 +18,13 @@ Also, you need to include the library as your dependency:
 libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.4"
 ```
 
+When using scala 2.10.x, also add the macro paradise plugin to your build:
+
+```scala
+libraryDependencies +=
+  compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+```
+
 Usage
 -----
 Make sure to extend the [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) trait in your tests.
