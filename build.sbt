@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtGit.GitKeys._
 
 name := "random-data-generator"
-version := "2.0"
+version := "2.1-SNAPSHOT"
 
 scalaVersion := "2.12.1"
 
