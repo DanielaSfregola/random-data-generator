@@ -7,15 +7,16 @@ A library to generate random data for test purposes, using [ScalaCheck](https://
 
 Setup
 -----
-If you don't have it already, make sure you add the Maven Central as resolver in your SBT settings:
+Supported Scala versions: 2.10.x, 2.11.x, 2.12.x
 
+If you don't have it already, make sure you add the Maven Central as resolver in your SBT settings:
 ```scala
 resolver += Resolver.sonatypeRepo("releases")
 ```
 
 Also, you need to include the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.4"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.0"
 ```
 
 Usage
@@ -91,5 +92,5 @@ resolver += Resolver.sonatypeRepo("snapshots")
 
 Then, add the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "1.5-SNAPSHOT"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.1-SNAPSHOT"
 ```
