@@ -13,12 +13,11 @@ language: scala
 
 script:
     - export RANDOM_DATA_GENERATOR_SEED=2481216758852790303
-    - sbt clean coverage test
+    - sbt clean coverage test coverageReport
     - unset RANDOM_DATA_GENERATOR_SEED
-    - sbt coverage test
 
-after_script:
-    - sbt coverageReport coveralls
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 scala:
   - 2.12.1
