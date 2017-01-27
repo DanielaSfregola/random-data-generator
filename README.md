@@ -83,6 +83,12 @@ val examples: Seq[Example] = random[Example](2)
 // List(Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257), Example(᭞㩵᭟뛎Ժ䌑讵蓐ꍊꎼꙐ涌㰑袽,1736119865))
 ```
 
+How to improve the Compilation Time
+-----------------------------------
+This is a project that is heavily using [Shapeless](https://github.com/milessabin/shapeless), so its compilation time can be slow at times -- but think of all the magic that the compiler is doing for you!
+
+To improve the compilation time, you can cache your implicit `Arbitrary` instances using `shapeless.cachedImplicit`. For more information on what it is and on how to use it have a look [here](http://stackoverflow.com/a/34401558)
+
 Snapshot Versions
 -----------------
 To use a snapshot version of this library, make sure you have the resolver for maven central (snapshot repositories) in your SBT settings:
