@@ -17,6 +17,15 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
       instance should beAnInstanceOf[Example]
     }
 
+    "generate a random instance which is different each call" in {
+      case class Example(text: String, n: Int)
+
+      val instance1 = random[Example]
+      val instance2 = random[Example]
+
+      instance1 shouldNotEqual instance2
+    }
+
     "generate multiple instances of a simple case class" in {
       case class Example(text: String, n: Int)
 
