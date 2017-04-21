@@ -5,6 +5,8 @@ random-data-generator
 
 A library to generate random data for test purposes, using [ScalaCheck](https://github.com/rickynils/scalacheck) and [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless).
 
+This library has been presented at Scalar 2017: have a look at the [slides](https://speakerdeck.com/danielasfregola/random-data-generation-with-scalacheck-scalar-2017) and the video of the presentation (coming soon!)
+
 Setup
 -----
 Supported Scala versions: 2.10.x, 2.11.x, 2.12.x
@@ -72,8 +74,8 @@ otherwise, the following message will appear:
 [info] [RandomDataGenerator] No variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to random number
 ```
 
-Multiple Instances of a Case Class
-----------------------------------
+Multiple Random Instances 
+-------------------------
 Fixing the seed at the beginning of each session has an important side effect: when calling the function `random[T]`, we always get the same instance back.
 However, sometimes we do need multiple instances of the same case class within the same test.
 
