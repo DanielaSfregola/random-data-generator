@@ -23,20 +23,22 @@ libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.0"
 
 Usage
 -----
-Make sure to extend the [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) trait in your tests.
+Extends the trait [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) to add the function `random` to your scope.
+Once the trait has been extended, you can just use the random function as following:
 
-Assuming you have a case class defined as following:
 ```scala
-case class Example(text: String, n: Int)
+import com.danielasfregola.randomdatagenerator.RandomDataGenerator
+
+object MyApp extends RandomDataGenerator {
+
+  case class Example(text: String, n: Int)
+
+  val example: Example = random[Example]
+  // returns a random instance of Example like Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257)
+}
 ```
 
-then you can just create a random instance of your case class as following:
-```scala
-val example: Example = random[Example]
-// Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257)
-```
-
-Have a look at the [tests](/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for working examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
+Have a look at the [tests](/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for more examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
 
 Seed Selection
 --------------
@@ -85,11 +87,21 @@ val examples: Seq[Example] = random[Example](2)
 // List(Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257), Example(᭞㩵᭟뛎Ժ䌑讵蓐ꍊꎼꙐ涌㰑袽,1736119865))
 ```
 
-How to improve the Compilation Time
------------------------------------
+Improve the Compilation Time
+----------------------------
 This is a project that is heavily using [Shapeless](https://github.com/milessabin/shapeless), so its compilation time can be slow at times -- but think of all the magic that the compiler is doing for you!
 
-To improve the compilation time, you can cache your implicit `Arbitrary` instances using `shapeless.cachedImplicit`. For more information on what it is and on how to use it have a look [here](http://stackoverflow.com/a/34401558)
+To improve the compilation time, you can cache your implicit `Arbitrary` instances using `shapeless.cachedImplicit`:
+
+```scala
+import shapeless._
+
+object CachedArbitraries {
+    implicit val arbA: Arbitrary[A] = cachedImplicit
+    implicit val arbB: Arbitrary[B] = cachedImplicit
+}
+```
+For more information on what it is and on how to use it have a look [here](http://stackoverflow.com/a/34401558).
 
 Snapshot Versions
 -----------------
