@@ -1,7 +1,7 @@
 random-data-generator
 =====================
 
-[![Build Status](https://travis-ci.org/DanielaSfregola/random-data-generator.svg?branch=master)](https://travis-ci.org/DanielaSfregola/random-data-generator) [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+[![Build Status](https://travis-ci.org/DanielaSfregola/random-data-generator.svg?branch=master)](https://travis-ci.org/DanielaSfregola/random-data-generator) [![codecov.io](http://codecov.io/github/DanielaSfregola/random-data-generator/coverage.svg?branch=master)](http://codecov.io/github/DanielaSfregola/random-data-generator?branch=master) [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 A library to generate random data for test purposes, using [ScalaCheck](https://github.com/rickynils/scalacheck) and [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless).
 
@@ -34,8 +34,21 @@ object MyApp extends RandomDataGenerator {
   case class Example(text: String, n: Int)
 
   val example: Example = random[Example]
-  // returns a random instance of Example like Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257)
+  // Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257)
 }
+```
+
+Alternatively, you can import [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) as object:
+
+```scala
+import com.danielasfregola.randomdatagenerator.RandomDataGenerator._
+
+case class Example(text: String, n: Int)
+
+val example: Example = random[Example]
+// Example(巵腉밞鵾Վ뎠꿷덊,2147483647)
+
+
 ```
 
 Have a look at the [tests](/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for more examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
@@ -45,7 +58,7 @@ Seed Selection
 At the beginning of each test session, a seed is selected and used across all the tests.
 The select seed is communicated in the logs. The log message looks something like the following:
 ```bash
-[info] [RandomDataGenerator] Generating random data with seed -2481216758852790303
+[info] [RandomDataGenerator] Generating random data using seed 6260565278463862333
 ```
 
 Fix your Seed
@@ -54,12 +67,14 @@ When investigating bugs or test failures, it can be useful to reproduce the same
 
 For every session, a seed is selected and communicated in the logs. The log message will look similar to the following:
 ```bash
-[info] [RandomDataGenerator] Generating random data with seed -2481216758852790303
+[info] [RandomDataGenerator] Generating random data using seed 6260565278463862333
+[info] [RandomDataGenerator] Replicate this session by setting RANDOM_DATA_GENERATOR_SEED=6260565278463862333
+
 ```
 
 To generate the same data again, all you need to do is specify an environment variable indicating the seed number to use:
 ```bash
-export RANDOM_DATA_GENERATOR_SEED=-2481216758852790303
+export RANDOM_DATA_GENERATOR_SEED=6260565278463862333
 ```
 
 Once you are done, remember to remove the environment variable:
@@ -69,7 +84,7 @@ unset RANDOM_DATA_GENERATOR_SEED
 
 When a fix seed variable is detected, in the logs you will see something similar to the following:
 ```bash
-[info] [RandomDataGenerator] Variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to -2481216758852790303
+[info] [RandomDataGenerator] Variable RANDOM_DATA_GENERATOR_SEED detected: setting 6260565278463862333 as seed
 ```
 otherwise, the following message will appear:
 ```bash
@@ -83,6 +98,8 @@ However, sometimes we do need multiple instances of the same case class within t
 
 To generate multiple instances of the same case class use the `random[T](n: Int)` function as following:
 ```scala
+import com.danielasfregola.randomdatagenerator.RandomDataGenerator._
+
 val examples: Seq[Example] = random[Example](2)
 // List(Example(ਈ䈦㈾钜㔪旅ꪔ墛炝푰⡨䌆ᵅ퍧咪, 73967257), Example(᭞㩵᭟뛎Ժ䌑讵蓐ꍊꎼꙐ涌㰑袽,1736119865))
 ```
