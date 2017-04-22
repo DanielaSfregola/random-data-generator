@@ -18,4 +18,3 @@ trait RandomDataGenerator extends ShapelessLike {
   }
 
 }
-
