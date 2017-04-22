@@ -1,8 +1,8 @@
-package com.danielasfregola.randomdatagenerator
+package com.danielasfregola.randomdatagenerator.utils
 
 import org.scalacheck.derive._
 
-trait ShapelessLike
+private[randomdatagenerator] trait ShapelessLike
     extends SingletonInstances
     with HListInstances
     with CoproductInstances
