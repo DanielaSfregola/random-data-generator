@@ -21,10 +21,10 @@ private[randomdatagenerator] trait SeedDetector {
 
   private lazy val seedValue: Long = optLongVariable match {
     case Some(preSelectedSeed) =>
-      logger.info(s"Variable $SeedVariableName detected: setting seed to $preSelectedSeed")
+      logger.info(s"Variable $SeedVariableName detected: setting $preSelectedSeed as seed")
       preSelectedSeed
     case None =>
-      logger.info(s"No variable $SeedVariableName detected: setting seed to random number")
+      logger.info(s"No variable $SeedVariableName detected: setting random seed")
       randomLong
   }
 
