@@ -14,10 +14,11 @@ libraryDependencies ++= {
 }
 
 libraryDependencies ++= {
+  val ScalacheckShapeless = "1.1.5"
   val Spec2 = "3.8.6"
 
   Seq(
-    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.4",
+    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
     "org.specs2" %% "specs2-core" % Spec2 % "test",
     "org.specs2" %% "specs2-mock" % Spec2 % "test"
   )
