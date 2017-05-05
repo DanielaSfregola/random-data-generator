@@ -5,7 +5,7 @@ random-data-generator
 
 A library to generate random data for test purposes, using [ScalaCheck](https://github.com/rickynils/scalacheck) and [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless).
 
-This library has been presented at Scalar 2017: have a look at the [slides](https://speakerdeck.com/danielasfregola/random-data-generation-with-scalacheck-scalar-2017) and the video of the presentation (coming soon!)
+This library has been presented at Scalar 2017: have a look at the [slides](https://speakerdeck.com/danielasfregola/random-data-generation-with-scalacheck-scalar-2017) and the [video](https://www.youtube.com/watch?v=Yx64dgTkX5k&list=PL8NC5lCgGs6Pd7RCawHK4XN0oq23oRe7U&index=11) of the presentation.
 
 Setup
 -----
