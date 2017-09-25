@@ -3,7 +3,7 @@ import com.typesafe.sbt.SbtGit.GitKeys._
 name := "random-data-generator"
 version := "2.2-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.3"
 
 scalacOptions in Test ++= Seq("-Yrangepos")
 
@@ -14,7 +14,7 @@ libraryDependencies ++= {
 }
 
 libraryDependencies ++= {
-  val ScalacheckShapeless = "1.1.5"
+  val ScalacheckShapeless = "1.1.7"
   val Spec2 = "3.8.6"
 
   Seq(
