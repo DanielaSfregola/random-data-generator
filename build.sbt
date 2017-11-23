@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtGit.GitKeys._
 
 name := "random-data-generator"
-version := "2.3"
+version := "2.4-SNAPSHOT"
 
 scalaVersion := "2.12.3"
 
@@ -25,7 +25,7 @@ libraryDependencies ++= {
 }
 
 lazy val standardSettings = Seq(
-  crossScalaVersions := Seq("2.12.1", "2.11.8", "2.10.6"),
+  crossScalaVersions := Seq("2.12.3", "2.11.8", "2.10.6"),
   organization := "com.danielasfregola",
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
