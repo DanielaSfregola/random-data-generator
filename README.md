@@ -124,7 +124,7 @@ Snapshot Versions
 -----------------
 To use a snapshot version of this library, make sure you have the resolver for maven central (snapshot repositories) in your SBT settings:
 ```scala
-resolver += Resolver.sonatypeRepo("snapshots")
+resolvers += Resolver.sonatypeRepo("snapshots")
 ```
 
 Then, add the library as your dependency:
