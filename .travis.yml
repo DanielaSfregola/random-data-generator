@@ -18,7 +18,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 scala:
-  - 2.12.3
+  - 2.12.4
   - 2.11.11
   - 2.10.6
 
@@ -28,7 +28,7 @@ jdk:
 
 matrix:
   exclude:
-  - scala: 2.12.3
+  - scala: 2.12.4
     jdk: oraclejdk7
   - scala: 2.10.6
     jdk: oraclejdk8
