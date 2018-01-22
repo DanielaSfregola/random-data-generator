@@ -3,7 +3,7 @@ import com.typesafe.sbt.SbtGit.GitKeys._
 name := "random-data-generator"
 version := "2.4-SNAPSHOT"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
 
 scalacOptions in Test ++= Seq("-Yrangepos")
 
@@ -46,7 +46,6 @@ lazy val standardSettings = Seq(
   gitRemoteRepo := "git@github.com:DanielaSfregola/random-data-generator.git",
   scalacOptions ++= Seq("-encoding",
                         "UTF-8",
-                        "-Xlint",
                         "-deprecation",
                         "-Xfatal-warnings",
                         "-feature",
@@ -64,4 +63,8 @@ lazy val standardSettings = Seq(
   }
 )
 
-lazy val root = Project(id = "random-data-generator", base = file("."), settings = standardSettings ++ site.settings)
+lazy val root = (project in file("."))
+  .settings(standardSettings)
+  .settings(
+    name := "random-data-generator"
+  )
