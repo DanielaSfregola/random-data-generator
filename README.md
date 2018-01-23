@@ -18,7 +18,9 @@ resolver += Resolver.sonatypeRepo("releases")
 
 Also, you need to include the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.3"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.4"
+
+Do you wanna faster compilation times? Have a look at [random-data-generator-magnolia](https://github.com/DanielaSfregola/random-data-generator-magnolia) - experimental but crazy fast thanks to [Magnolia](https://github.com/propensive/magnolia)!
 ```
 
 Usage
@@ -91,7 +93,7 @@ otherwise, the following message will appear:
 [info] [RandomDataGenerator] No variable RANDOM_DATA_GENERATOR_SEED detected: setting seed to random number
 ```
 
-Multiple Random Instances 
+Multiple Random Instances
 -------------------------
 Fixing the seed at the beginning of each session has an important side effect: when calling the function `random[T]`, we always get the same instance back.
 However, sometimes we do need multiple instances of the same case class within the same test.
@@ -106,7 +108,9 @@ val examples: Seq[Example] = random[Example](2)
 
 Improve the Compilation Time
 ----------------------------
-This is a project that is heavily using [Shapeless](https://github.com/milessabin/shapeless), so its compilation time can be slow at times -- but think of all the magic that the compiler is doing for you!
+First, have a look at [random-data-generator-magnolia](https://github.com/DanielaSfregola/random-data-generator-magnolia): although the project is still sperimental, has increased impressive speedup in the compilation by using [Magnolia](https://github.com/propensive/magnolia)'s type class derivation.
+
+[random-data-generator](https://github.com/DanielaSfregola/random-data-generator) heavily uses [Shapeless](https://github.com/milessabin/shapeless), so its compilation time can be slow at times -- but think of all the magic that the compiler is doing for you!
 
 To improve the compilation time, you can cache your implicit `Arbitrary` instances using `shapeless.cachedImplicit`:
 
@@ -129,5 +133,5 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 Then, add the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.4-SNAPSHOT"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.5-SNAPSHOT"
 ```
