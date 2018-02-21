@@ -13,7 +13,7 @@ class PrettyPrinterSpec extends SpecificationLike with Mockito {
 
     val printer = {
       val mockPrintF = (log: String) => append(log)
-      spy(new PrettyPrinter(mockPrintF))
+      new PrettyPrinter(mockPrintF)
     }
   }
 
