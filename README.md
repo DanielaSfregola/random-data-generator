@@ -29,7 +29,7 @@ Extends the trait [`RandomDataGenerator`](https://github.com/DanielaSfregola/ran
 Once the trait has been extended, you can just use the random function as following:
 
 ```scala
-import com.danielasfregola.randomdatagenerator.RandomDataGenerator
+import com.danielasfregola.randomdatagenerator.RandomDataGenerator._
 
 object MyApp extends RandomDataGenerator {
 
