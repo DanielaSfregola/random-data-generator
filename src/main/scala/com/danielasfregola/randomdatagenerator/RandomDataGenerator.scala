@@ -16,10 +16,11 @@ trait RandomDataGenerator extends ShapelessLike {
   def random[T : WeakTypeTag : Arbitrary](n: Int): Seq[T] = {
     val gen = Gen.listOfN(n, implicitly[Arbitrary[T]].arbitrary)
     val optSeqT = gen.apply(Gen.Parameters.default, seed)
+    val tpe = implicitly[WeakTypeTag[T]].tpe
     optSeqT.getOrElse {
       throw new Exception(s"""
-          Scalacheck could not generate a random value for ${implicitly[WeakTypeTag[T]].tpe}.
-          Please, make use that the Arbitrary for type A is not too restrictive
+          Scalacheck could not generate a random value for $tpe.
+          Please, make use that the Arbitrary for type $tpe is not too restrictive
         """)
     }
   }

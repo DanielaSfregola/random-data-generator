@@ -129,7 +129,7 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
       case class Example(text: String, n: Int)
       random[Example] must throwA(new Exception("""
           Scalacheck could not generate a random value for Example.
-          Please, make use that the Arbitrary for type A is not too restrictive
+          Please, make use that the Arbitrary for type Example is not too restrictive
         """))
     }
   }
