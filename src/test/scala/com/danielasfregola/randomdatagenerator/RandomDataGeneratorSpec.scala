@@ -124,6 +124,14 @@ class RandomDataGeneratorSpec extends RandomDataGenerator with SpecificationLike
       instance should beAnInstanceOf[BigExample]
     }
 
+    "throw an exception when the arbitrary is too restrictive" in {
+      implicit val restrictive = Arbitrary(Gen.chooseNum(1, 100).suchThat(_ > 200))
+      case class Example(text: String, n: Int)
+      random[Example] must throwA(new Exception("""
+          Scalacheck could not generate a random value for Example.
+          Please, make use that the Arbitrary for type Example is not too restrictive
+        """))
+    }
   }
 
 }

@@ -3,18 +3,26 @@ package com.danielasfregola.randomdatagenerator
 import com.danielasfregola.randomdatagenerator.utils.{SeedDetector, ShapelessLike}
 import org.scalacheck._
 
+import scala.reflect.runtime.universe._
+
 object RandomDataGenerator extends RandomDataGenerator
 
 trait RandomDataGenerator extends ShapelessLike {
 
   protected[randomdatagenerator] val seed = SeedDetector.seed
 
-  def random[T](implicit arb: Arbitrary[T]): T = random(1)(arb).head
+  def random[T : WeakTypeTag : Arbitrary]: T = random(1).head
 
-  def random[T](n: Int)(implicit arb: Arbitrary[T]): Seq[T] = {
-    val gen = Gen.listOfN(n, arb.arbitrary)
+  def random[T : WeakTypeTag : Arbitrary](n: Int): Seq[T] = {
+    val gen = Gen.listOfN(n, implicitly[Arbitrary[T]].arbitrary)
     val optSeqT = gen.apply(Gen.Parameters.default, seed)
-    optSeqT.get
+    val tpe = implicitly[WeakTypeTag[T]].tpe
+    optSeqT.getOrElse {
+      throw new Exception(s"""
+          Scalacheck could not generate a random value for $tpe.
+          Please, make use that the Arbitrary for type $tpe is not too restrictive
+        """)
+    }
   }
 
 }

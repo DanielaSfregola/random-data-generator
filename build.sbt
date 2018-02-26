@@ -19,6 +19,7 @@ libraryDependencies ++= {
 
   Seq(
     "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
     "org.specs2" %% "specs2-core" % Spec2 % "test",
     "org.specs2" %% "specs2-mock" % Spec2 % "test"
   )
