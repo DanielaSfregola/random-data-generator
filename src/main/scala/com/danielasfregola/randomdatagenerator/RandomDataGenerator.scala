@@ -4,6 +4,7 @@ import com.danielasfregola.randomdatagenerator.utils.{SeedDetector, ShapelessLik
 import org.scalacheck._
 
 import scala.reflect.runtime.universe._
+import scala.util.{Success, Try}
 
 object RandomDataGenerator extends RandomDataGenerator
 
@@ -14,9 +15,11 @@ trait RandomDataGenerator extends ShapelessLike {
   def random[T: WeakTypeTag: Arbitrary]: T = random(1).head
 
   def random[T: WeakTypeTag: Arbitrary](n: Int): Seq[T] = {
-    val gen = Gen.listOfN(n, implicitly[Arbitrary[T]].arbitrary)
-    val optSeqT = gen.apply(Gen.Parameters.default, seed)
-    optSeqT.getOrElse(explode)
+    val gen = Gen.infiniteStream(implicitly[Arbitrary[T]].arbitrary)
+    Try(gen.apply(Gen.Parameters.default, seed)) match {
+      case Success(Some(v)) => v.take(n)
+      case _                => explode[T]
+    }
   }
 
   private def explode[T: WeakTypeTag]() = {
