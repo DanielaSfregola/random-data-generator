@@ -27,7 +27,7 @@ libraryDependencies ++= {
 
 lazy val standardSettings = Seq(
   name := "random-data-generator",
-  crossScalaVersions := Seq("2.12.4", "2.11.8", "2.10.6"),
+  crossScalaVersions := Seq("2.12.4", "2.11.8"),
   organization := "com.danielasfregola",
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
