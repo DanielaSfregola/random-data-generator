@@ -1,6 +1,8 @@
 random-data-generator
 =====================
 
+[![Join the chat at https://gitter.im/random-data-generator/Lobby](https://badges.gitter.im/random-data-generator/Lobby.svg)](https://gitter.im/random-data-generator/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/DanielaSfregola/random-data-generator.svg?branch=master)](https://travis-ci.org/DanielaSfregola/random-data-generator) [![codecov.io](http://codecov.io/github/DanielaSfregola/random-data-generator/coverage.svg?branch=master)](http://codecov.io/github/DanielaSfregola/random-data-generator?branch=master) [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 A library to generate random data for test purposes, using [ScalaCheck](https://github.com/rickynils/scalacheck) and [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless).
