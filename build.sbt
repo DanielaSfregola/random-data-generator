@@ -3,7 +3,7 @@ import com.typesafe.sbt.SbtGit.GitKeys._
 name := "random-data-generator"
 version := "2.6-SNAPSHOT"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.6"
 
 scalacOptions in Test ++= Seq("-Yrangepos")
 
@@ -14,8 +14,8 @@ libraryDependencies ++= {
 }
 
 libraryDependencies ++= {
-  val ScalacheckShapeless = "1.1.7"
-  val Spec2 = "3.8.6"
+  val ScalacheckShapeless = "1.1.8"
+  val Spec2 = "4.3.4"
 
   Seq(
     "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
@@ -27,7 +27,7 @@ libraryDependencies ++= {
 
 lazy val standardSettings = Seq(
   name := "random-data-generator",
-  crossScalaVersions := Seq("2.12.4", "2.11.8"),
+  crossScalaVersions := Seq("2.12.6", "2.11.8"),
   organization := "com.danielasfregola",
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
