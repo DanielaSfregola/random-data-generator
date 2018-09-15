@@ -2,8 +2,10 @@ package com.danielasfregola.randomdatagenerator.utils
 
 import scala.util.Properties
 
-object SeedVariable {
+protected[utils] object SeedVariable {
 
-  protected[utils] lazy val name = Properties.envOrNone(SeedDetector.SeedVariableName)
+  lazy val name = "RANDOM_DATA_GENERATOR_SEED"
+
+  lazy val value = Properties.envOrNone(name)
 
 }
