@@ -12,7 +12,8 @@ before_cache:
 language: scala
 
 script:
-    - sbt clean coverage test coverageReport
+    - sbt ";clean;rootJVM/test;rootJS/test"
+    - sbt ";clean;coverage;rootJVM/test;coverageReport"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
@@ -20,7 +21,6 @@ after_success:
 scala:
   - 2.12.4
   - 2.11.11
-  - 2.10.6
 
 jdk:
   - oraclejdk7
@@ -30,13 +30,14 @@ matrix:
   exclude:
   - scala: 2.12.4
     jdk: oraclejdk7
-  - scala: 2.10.6
-    jdk: oraclejdk8
   - scala: 2.11.11
     jdk: oraclejdk8
 
 env:
   - SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
+
+install:
+  - source travis/setNodeVersion.sh
 
 # whitelist
 branches:
