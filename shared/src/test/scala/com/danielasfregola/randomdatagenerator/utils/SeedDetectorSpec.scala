@@ -11,8 +11,6 @@ class SeedDetectorSpec extends SpecificationLike with Mockito {
     val myRandomLong = scala.util.Random.nextLong
 
     def buildSeedDetector(myEnvVariable: Option[String]) = new SeedDetector {
-      override protected lazy val logger = mock[PrettyPrinter]
-
       override protected lazy val envVariable = myEnvVariable
       override protected def randomLong = myRandomLong
     }

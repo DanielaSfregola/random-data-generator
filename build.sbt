@@ -1,34 +1,12 @@
 import com.typesafe.sbt.SbtGit.GitKeys._
-
-name := "random-data-generator"
-version := "2.7-SNAPSHOT"
-
-scalaVersion := "2.12.6"
-
-scalacOptions in Test ++= Seq("-Yrangepos")
-
-libraryDependencies ++= {
-  if (scalaVersion.value.startsWith("2.10."))
-    Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full))
-  else Seq()
-}
-
-libraryDependencies ++= {
-  val ScalacheckShapeless = "1.1.8"
-  val Spec2 = "4.3.4"
-
-  Seq(
-    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
-    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    "org.specs2" %% "specs2-core" % Spec2 % "test",
-    "org.specs2" %% "specs2-mock" % Spec2 % "test"
-  )
-}
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 lazy val standardSettings = Seq(
-  name := "random-data-generator",
-  crossScalaVersions := Seq("2.12.6", "2.11.8"),
   organization := "com.danielasfregola",
+  version := "2.7-SNAPSHOT",
+  scalaVersion := "2.12.6",
+  crossScalaVersions := Seq("2.12.6", "2.11.8"),
+  scalacOptions in Test ++= Seq("-Yrangepos"),
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
   scmInfo := Some(
@@ -69,5 +47,25 @@ lazy val standardSettings = Seq(
   }
 )
 
-lazy val root = (project in file("."))
-  .settings(standardSettings)
+lazy val root =
+  crossProject(JSPlatform, JVMPlatform)
+    .crossType(CrossType.Full)
+    .in(file("."))
+    .settings(standardSettings)
+    .settings(
+      name := "random-data-generator",
+      libraryDependencies ++= {
+        val ScalacheckShapeless = "1.1.8"
+        val Spec2 = "4.3.4"
+
+        Seq(
+          "com.github.alexarchambault" %%% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
+          "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided",
+          "org.specs2" %%% "specs2-core" % Spec2 % "test",
+          "org.specs2" %%% "specs2-mock" % Spec2 % "test"
+        )
+      }
+    )
+
+lazy val rootJS     = root.js
+lazy val rootJVM    = root.jvm
