@@ -12,8 +12,8 @@ before_cache:
 language: scala
 
 script:
-    - sbt ";clean;rootJVM/test;rootJS/test"
-    - sbt ";clean;coverage;rootJVM/test;coverageReport"
+    - sbt clean coverage rootJVM/test rootJS/test coverageReport
+    - sbt coverageAggregate
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
