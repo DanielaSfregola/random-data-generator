@@ -1,0 +1,20 @@
+coverage:
+  status:
+    project:
+      default: off
+      js:
+        flags: js
+      jvm:
+        flags: jvm
+
+flags:
+  jvm:
+    paths:
+      - jvm/
+  js:
+    paths:
+      - js/
+  tests:
+    paths:
+      - js/src/test/
+      - jvm/src/test/
