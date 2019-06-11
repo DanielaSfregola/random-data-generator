@@ -5,7 +5,7 @@ lazy val standardSettings = Seq(
   organization := "com.danielasfregola",
   version := "2.7-SNAPSHOT",
   scalaVersion := "2.12.8",
-  crossScalaVersions := Seq("2.13.0-RC1", "2.12.8", "2.11.8"),
+  crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.8"),
   scalacOptions in Test ++= Seq("-Yrangepos"),
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
@@ -55,7 +55,7 @@ lazy val root =
     .settings(
       name := "random-data-generator",
       libraryDependencies ++= {
-        val ScalacheckShapeless = "1.2.2"
+        val ScalacheckShapeless = "1.2.3"
         val Spec2 = "4.5.1"
 
         Seq(
