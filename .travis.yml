@@ -19,19 +19,12 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 scala:
-  - 2.12.4
-  - 2.11.11
+  - 2.13.0
+  - 2.12.8
+  - 2.11.8
 
 jdk:
-  - oraclejdk7
   - oraclejdk8
-
-matrix:
-  exclude:
-  - scala: 2.12.4
-    jdk: oraclejdk7
-  - scala: 2.11.11
-    jdk: oraclejdk8
 
 env:
   - SBT_OPTS="-XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"

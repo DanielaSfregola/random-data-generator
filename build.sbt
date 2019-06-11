@@ -4,8 +4,8 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 lazy val standardSettings = Seq(
   organization := "com.danielasfregola",
   version := "2.7-SNAPSHOT",
-  scalaVersion := "2.12.6",
-  crossScalaVersions := Seq("2.12.6", "2.11.8"),
+  scalaVersion := "2.12.8",
+  crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.8"),
   scalacOptions in Test ++= Seq("-Yrangepos"),
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
@@ -55,11 +55,11 @@ lazy val root =
     .settings(
       name := "random-data-generator",
       libraryDependencies ++= {
-        val ScalacheckShapeless = "1.1.8"
-        val Spec2 = "4.3.4"
+        val ScalacheckShapeless = "1.2.3"
+        val Spec2 = "4.5.1"
 
         Seq(
-          "com.github.alexarchambault" %%% "scalacheck-shapeless_1.13" % ScalacheckShapeless,
+          "com.github.alexarchambault" %%% "scalacheck-shapeless_1.14" % ScalacheckShapeless,
           "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided",
           "org.specs2" %%% "specs2-core" % Spec2 % "test",
           "org.specs2" %%% "specs2-mock" % Spec2 % "test"
