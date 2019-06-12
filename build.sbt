@@ -3,8 +3,7 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 lazy val standardSettings = Seq(
   organization := "com.danielasfregola",
-  version := "2.7-SNAPSHOT",
-  scalaVersion := "2.12.8",
+  version := "2.7",
   scalaVersion := "2.13.0",
   crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.8"),
   scalacOptions in Test ++= Seq("-Yrangepos"),
@@ -24,7 +23,7 @@ lazy val standardSettings = Seq(
   </developers>
   ),
   publishMavenStyle := true,
-  publishTo := {
+  publishTo in ThisBuild := {
     if (version.value.trim.endsWith("SNAPSHOT")) Some(Opts.resolver.sonatypeSnapshots)
     else Some(Opts.resolver.sonatypeStaging)
   },
