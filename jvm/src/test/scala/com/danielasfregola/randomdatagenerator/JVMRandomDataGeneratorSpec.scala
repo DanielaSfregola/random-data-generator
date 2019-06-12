@@ -10,10 +10,9 @@ class JVMRandomDataGeneratorSpec extends RandomDataGenerator with SpecificationL
   "RandomDataGenerator" should {
 
     "generate a random instance of a non-predefined type" in {
-      import scala.collection.JavaConverters._
 
       implicit val arbitraryCurrency: Arbitrary[Currency] = Arbitrary {
-        Gen.oneOf(Currency.getAvailableCurrencies.asScala.toSeq)
+        Gen.oneOf(Currency.getInstance("USD"), Currency.getInstance("GBP"), Currency.getInstance("EUR"))
       }
 
       val instance = random[Currency]
