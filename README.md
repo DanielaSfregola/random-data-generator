@@ -11,6 +11,7 @@ This library has been presented at Scalar 2017: have a look at the [slides](http
 Setup
 -----
 Supported Scala versions: 2.11.x, 2.12.x, 2.13.x
+
 Scala JS is also supported!
 
 If you don't have it already, make sure you add the Maven Central as resolver in your SBT settings:
