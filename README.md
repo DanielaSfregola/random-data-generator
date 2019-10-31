@@ -21,7 +21,7 @@ resolvers += Resolver.sonatypeRepo("releases")
 
 Also, you need to include the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.7"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.8"
 ```
 
 Do you wanna faster compilation times? Have a look at [random-data-generator-magnolia](https://github.com/DanielaSfregola/random-data-generator-magnolia) - experimental but crazy fast thanks to [Magnolia](https://github.com/propensive/magnolia)!
@@ -136,5 +136,5 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 Then, add the library as your dependency:
 ```scala
-libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.8-SNAPSHOT"
+libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.9-SNAPSHOT"
 ```
