@@ -28,7 +28,7 @@ Do you wanna faster compilation times? Have a look at [random-data-generator-mag
 
 Usage
 -----
-Extends the trait [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) to add the function `random` to your scope.
+Extends the trait [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/js/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) to add the function `random` to your scope.
 Once the trait has been extended, you can just use the random function as following:
 
 ```scala
@@ -43,7 +43,7 @@ object MyApp extends RandomDataGenerator {
 }
 ```
 
-Alternatively, you can import [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) as object:
+Alternatively, you can import [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/js/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) as object:
 
 ```scala
 import com.danielasfregola.randomdatagenerator.RandomDataGenerator._
@@ -56,7 +56,7 @@ val example: Example = random[Example]
 
 ```
 
-Have a look at the [tests](/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for more examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
+Have a look at the [tests](/shared/src/test/scala/com/danielasfregola/randomdatagenerator/RandomDataGeneratorSpec.scala) for more examples on how to use the library and on how to generate manual instances of `Arbitrary[T]` when needed.
 
 Seed Selection
 --------------
