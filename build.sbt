@@ -55,7 +55,7 @@ lazy val root =
     .settings(
       name := "random-data-generator",
       libraryDependencies ++= {
-        val ScalacheckShapeless = "1.2.3"
+        val ScalacheckShapeless = "1.2.4"
         val Spec2 = "4.5.1"
 
         Seq(
