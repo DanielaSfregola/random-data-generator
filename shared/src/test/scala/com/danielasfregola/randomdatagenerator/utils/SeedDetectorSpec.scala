@@ -1,11 +1,10 @@
 package com.danielasfregola.randomdatagenerator.utils
 
 import org.scalacheck.rng.Seed
-import org.specs2.mock.Mockito
 import org.specs2.mutable._
 import org.specs2.specification.Scope
 
-class SeedDetectorSpec extends SpecificationLike with Mockito {
+class SeedDetectorSpec extends SpecificationLike {
 
   abstract class SeedDetectorSpecContext extends Scope {
     val myRandomLong = scala.util.Random.nextLong

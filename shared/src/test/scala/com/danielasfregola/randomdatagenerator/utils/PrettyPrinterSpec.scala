@@ -1,11 +1,10 @@
 package com.danielasfregola.randomdatagenerator.utils
 
-import org.specs2.mock.Mockito
 import org.specs2.mutable._
 import org.specs2.specification.Scope
 import scala.collection.mutable.ListBuffer
 
-class PrettyPrinterSpec extends SpecificationLike with Mockito {
+class PrettyPrinterSpec extends SpecificationLike {
 
   abstract class PrettyPrinterSpecContext extends Scope {
     val logs: ListBuffer[String] = new ListBuffer
