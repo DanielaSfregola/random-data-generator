@@ -61,8 +61,7 @@ lazy val root =
         Seq(
           "com.github.alexarchambault" %%% "scalacheck-shapeless_1.14" % ScalacheckShapeless,
           "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided",
-          "org.specs2" %%% "specs2-core" % Spec2 % "test",
-          "org.specs2" %%% "specs2-mock" % Spec2 % "test"
+          "org.specs2" %%% "specs2-core" % Spec2 % "test"
         )
       }
     )
