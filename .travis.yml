@@ -14,8 +14,7 @@ before_cache:
   - find $HOME/.sbt -name "*.lock" -delete
 
 script:
-    - sbt clean coverage rootJVM/test rootJS/test coverageReport
-    - sbt coverageAggregate
+    - sbt clean rootJVM/test rootJS/test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
