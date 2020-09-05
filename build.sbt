@@ -56,7 +56,7 @@ lazy val root =
       name := "random-data-generator",
       libraryDependencies ++= {
         val ScalacheckShapeless = "1.2.5"
-        val Spec2 = "4.5.1"
+        val Spec2 = "4.10.3"
 
         Seq(
           "com.github.alexarchambault" %%% "scalacheck-shapeless_1.14" % ScalacheckShapeless,
