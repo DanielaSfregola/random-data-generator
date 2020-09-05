@@ -1,4 +1,8 @@
-sudo: false
+language: scala
+
+os: linux
+
+dist: xenial
 
 cache:
   directories:
@@ -8,8 +12,6 @@ cache:
 before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
   - find $HOME/.sbt -name "*.lock" -delete
-
-language: scala
 
 script:
     - sbt clean coverage rootJVM/test rootJS/test coverageReport
