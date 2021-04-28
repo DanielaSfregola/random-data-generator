@@ -24,8 +24,6 @@ Also, you need to include the library as your dependency:
 libraryDependencies += "com.danielasfregola" %% "random-data-generator" % "2.9"
 ```
 
-Do you wanna faster compilation times? Have a look at [random-data-generator-magnolia](https://github.com/DanielaSfregola/random-data-generator-magnolia) - experimental but crazy fast thanks to [Magnolia](https://github.com/propensive/magnolia)!
-
 Usage
 -----
 Extends the trait [`RandomDataGenerator`](https://github.com/DanielaSfregola/random-data-generator/blob/master/js/src/main/scala/com/danielasfregola/randomdatagenerator/RandomDataGenerator.scala) to add the function `random` to your scope.
@@ -111,8 +109,6 @@ val examples: Seq[Example] = random[Example](2)
 
 Improve the Compilation Time
 ----------------------------
-First, have a look at [random-data-generator-magnolia](https://github.com/DanielaSfregola/random-data-generator-magnolia): although the project is still sperimental, has increased impressive speedup in the compilation by using [Magnolia](https://github.com/propensive/magnolia)'s type class derivation.
-
 [random-data-generator](https://github.com/DanielaSfregola/random-data-generator) heavily uses [Shapeless](https://github.com/milessabin/shapeless), so its compilation time can be slow at times -- but think of all the magic that the compiler is doing for you!
 
 To improve the compilation time, you can cache your implicit `Arbitrary` instances using `shapeless.cachedImplicit`:
