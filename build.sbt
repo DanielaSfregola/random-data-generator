@@ -55,11 +55,11 @@ lazy val root =
     .settings(
       name := "random-data-generator",
       libraryDependencies ++= {
-        val ScalacheckShapeless = "1.2.5"
+        val ScalacheckShapeless = "1.3.0"
         val Spec2 = "4.10.3"
 
         Seq(
-          "com.github.alexarchambault" %%% "scalacheck-shapeless_1.14" % ScalacheckShapeless,
+          "com.github.alexarchambault" %%% "scalacheck-shapeless_1.15" % ScalacheckShapeless,
           "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided",
           "org.specs2" %%% "specs2-core" % Spec2 % "test"
         )
