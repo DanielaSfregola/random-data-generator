@@ -4,8 +4,8 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 lazy val standardSettings = Seq(
   organization := "com.danielasfregola",
   version := "2.10-SNAPSHOT",
-  scalaVersion := "2.13.8",
-  crossScalaVersions := Seq("2.13.8", "2.12.8"),
+  scalaVersion := "2.13.12",
+  crossScalaVersions := Seq("2.13.12", "2.12.8"),
   scalacOptions in Test ++= Seq("-Yrangepos"),
   licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://github.com/DanielaSfregola/random-data-generator")),
